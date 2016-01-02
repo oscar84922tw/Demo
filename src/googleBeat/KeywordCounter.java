@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+
 public class KeywordCounter {
 	private String urlStr;
 	private String content;
@@ -34,11 +36,9 @@ public class KeywordCounter {
 		return retVal;
 
 	}
-
-	public String getPage() throws IOException {
+	public String pagesInfo() throws IOException{
 		return fetchCountent();
 	}
-
 	public int countKeyword(String keyword) throws IOException {
 		if (content == null) {
 			content = fetchCountent();
