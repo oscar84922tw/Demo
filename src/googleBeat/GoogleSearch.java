@@ -24,7 +24,7 @@ public class GoogleSearch {
 	private String fetchCountent() throws IOException {
 		URL url = new URL("http://www.google.com/search?q=" + queryStr
 				+ "&num=50&oe=utf-8");
-		URLConnection conn = url.openConnection(); // URLConnection只能由URL物件生成
+		URLConnection conn = url.openConnection(); // URLConnection���URL�隞嗥���
 		conn.setRequestProperty("user-agent", "Chrome/47.0.2526.106");
 		conn.setRequestProperty("accept-language",
 				"zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4");
