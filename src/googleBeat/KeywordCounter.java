@@ -1,6 +1,5 @@
 package googleBeat;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,44 +13,40 @@ public class KeywordCounter {
 
 	public KeywordCounter(String urlStr) {
 		this.urlStr = urlStr;
-
 	}
 
-	private String fetchCountent() throws IOException {
+	public String getContent() {
+		return content;
+	}
+
+	private String fetchContent() throws IOException {
 		URL url = new URL(this.urlStr);
 		URLConnection conn = url.openConnection();
 		InputStream in = conn.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(in,
-				"UTF-8"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
 		String retVal = "";
 		String line = null;
 		while ((line = br.readLine()) != null) {
-
-			retVal += (line + "\n");
-
+			retVal = retVal + line + "\n";
 		}
+
 		return retVal;
-
-	}
-
-	public String getPage() throws IOException {
-		return fetchCountent();
 	}
 
 	public int countKeyword(String keyword) throws IOException {
 		if (content == null) {
-			content = fetchCountent();
+			content = fetchContent();
 		}
+
 		int retVal = 0;
-		int fromIdx = 0;
+		int fromIndex = 0;
 		int found = -1;
-		while ((found = content.indexOf(keyword, fromIdx)) != -1) {
-			// type type = (type) (found = content.nextElement();
+		while ((found = content.indexOf(keyword, fromIndex)) != -1) {
 			retVal++;
-			fromIdx = found + keyword.length();
+			fromIndex = found + keyword.length();
 		}
+
 		return retVal;
 	}
-
 }
